@@ -209,6 +209,8 @@ $(function(){
         });
     }
 });
+</script>
+
 </body>
 
 </html>
