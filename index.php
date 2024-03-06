@@ -46,8 +46,8 @@
             <ul class="nav">
                 <li><a href="#home" class="active"><i class="fa fa-home"></i>Home</a></li>
                 <li><a href="#about"><i class="fa fa-user"></i>About</a></li>
-                <!-- <li><a href="#"><i class="fa fa-list"></i>Services</a></li>
-                <li><a href="#"><i class="fa fa-briefcase"></i>Portfolio</a></li> -->
+                <!--<li><a href="#"><i class="fa fa-list"></i>Services</a></li> -->
+                <!-- <li><a href="#portfolio"><i class="fa fa-briefcase"></i>Portfolio</a></li> -->
                 <li><a href="#contact"><i class="fa fa-comments"></i>Contact</a></li>
             </ul>
         </div>
@@ -210,7 +210,7 @@
                                                 <div class="timeline-item">
                                                     <div class="circle-dot"></div>
                                                         <h3 class="timeline-date">
-                                                            <i class="fa fa-calendar"> 2022</i>
+                                                            <i class="fa fa-calendar"> 2023</i>
                                                         </h3>
                                                         <h4 class="timeline-title">Oracle Cloud Infrastructure</h4>
                                                         <img src="images/Oracle_Certificate-Galvez.png" class="image" alt="Certificate">
@@ -224,7 +224,18 @@
                                                         <h4 class="timeline-title">W3 Schools</h4>
                                                         <img src="images/w3schools-Galvez.png" class="image" alt="Certificate">
                                                 </div>
+                                                <!-- === TIMELINE ITEM === -->
+                                                <div class="timeline-item">
+                                                    <div class="circle-dot"></div>
+                                                        <h3 class="timeline-date">
+                                                            <i class="fa fa-calendar"> 2024</i>
+                                                        </h3>
+                                                        <h4 class="timeline-title">Web Game Development</h4>
+                                                        <img src="./images/portfolio/tiki_taki_tow.png" class="image" alt="Game Dev Experience">
+                                                        <a class="btn" href="https://tiki-taki-tow.azurewebsites.net/index.php" target="_blank" style=" display: flex; align-items: center; justify-content: center; height:15px;">Play Game</a>
+                                                </div>
 
+                                            
                         <!-- POP UP IMAGE MODAL -->
                 <div class="popup-image">
                     <span>&times;</span>
@@ -256,6 +267,35 @@
                 </div>
             </section>
             <!-- === About Section End === -->
+
+            <!-- === Portfolio Section Start === -->
+            <!-- <section class="portfolio section">
+                <div class="container">
+                    <div class="row">
+                        <div class="section-title padd-15">
+                            <h2>Portfolio</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="portfolio-heading padd-15">
+                            <h2>My Last Project :</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+            
+                        <div class="portfolio-item padd-15">
+                            <div class="portfolio-item-inner shadow-dark">
+                                <div class="portfolio-img">
+                                    <img src="./images/portfolio/tiki_taki_tow.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </section> -->
+            <!-- === Portfolio Section End === -->
+
             <!-- === Contact Section Start === -->
             <section class="contact section" id="contact">
                 <div class="container">
