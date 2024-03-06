@@ -1,3 +1,29 @@
+<?php
+    session_start();
+    if(isset($_SESSION["users"]))
+    {
+       
+        
+        // Fetch the user's information from the database
+    // $client_id = $_SESSION["client_id"];
+    require_once "database.php";
+      // get session variables
+      $loginClientId =  $_SESSION["client_id"]; 
+  
+      // Getting the Player Information at the Database
+      $queryGetUser = "SELECT * FROM clients_tbl WHERE client_id = '$loginClientId' ";
+  
+      $result = mysqli_query($conn, $queryGetUser);
+      $clientDetails = mysqli_fetch_array($result, MYSQLI_ASSOC);
+  
+      $email = $clientDetails["Email"];
+      $lastName = $clientDetails["last_name"];
+      $firstName = $clientDetails["first_name"];
+
+    }
+    
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,6 +36,8 @@
     <!-- FAVICON -->
     <link rel="icon" href="images/favicon.jpg" type="image/x-icon">
 
+</head>
+
     <!-- CSS Files -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/skins/color-1.css">
@@ -21,6 +49,11 @@
     <link rel="stylesheet" href="css/skins/color-4.css" class="alternate-style" title="color-4" disabled>
     <link rel="stylesheet" href="css/skins/color-5.css" class="alternate-style" title="color-5" disabled>
     <link rel="stylesheet" href="css/style-switcher.css">
+
+ 
+
+
+
 </head>
 
 <body>
@@ -38,17 +71,32 @@
                         location.reload();
                     }
                 </script>
+                
 
             </div>
+            
             <div class="nav-toggler">
                 <span></span>
             </div>
             <ul class="nav">
+                
                 <li><a href="#home" class="active"><i class="fa fa-home"></i>Home</a></li>
                 <li><a href="#about"><i class="fa fa-user"></i>About</a></li>
                 <!--<li><a href="#"><i class="fa fa-list"></i>Services</a></li> -->
                 <!-- <li><a href="#portfolio"><i class="fa fa-briefcase"></i>Portfolio</a></li> -->
                 <li><a href="#contact"><i class="fa fa-comments"></i>Contact</a></li>
+                
+                <!-- If there is a user logged in show the log out button -->
+                <?php 
+                if(isset($_SESSION["users"]))
+                    {   
+                    //    echo '<li><a href="settings.php"><i class="fa fa-cog"></i>Settings</a></li>';
+                       echo '<li><a href="logout.php"><i class="fa fa-sign-out"></i>Log Out</a></li>';
+                    }else{
+                        echo '<li><a href="registration.php"><i class="fa fa-bell"></i>Subscribe</a></li>';
+                    }
+                ?>
+                
             </ul>
         </div>
         <!-- === Aside End === -->
@@ -60,10 +108,10 @@
                 <div class="container">
                     <div class="row">
                         <div class="home-info padd-15">
-                            <h3 class="hello">Hello, my name is <span class="name">Jehu Vincent Galvez</span></h3>
+                            <h3 class="hello">Hello<?php if(isset($_SESSION["users"])) {echo " $firstName"; }?>, <br>My name is <span class="name">Jehu Vincent Galvez</span></h3>
                             <h3 class="my-profession">I am a <span class="typing"></span></span></h3>
 
-                            <p>I'm an IT Student. My expertise is to create website, I'm proficient in coding languages like HTML, CSS, and JavaScript. <br> I'm hopeful to contribute my skills and stay at the forefront of innovative tech solutions. </p>
+                            <p>I'm an IT Student. My expertise is to create website, I'm proficient in coding languages like HTML, CSS, and PHP. <br> I'm hopeful to contribute my skills and stay at the forefront of innovative tech solutions. </p>
 
                             <h3 class="hello"><span style="letter-spacing: 1px;">Let's shape the digital future together!</span></h3>
                             <a href="#about" class="btn about-me">More About Me</a>
@@ -88,8 +136,8 @@
                         <div class="about-content padd-15">
                             <div class="row">
                                 <div class="about-text padd-15">
-                                    <h3>I'm Jehu Vincent Galvez and<span> I'm a Web Developer</span></h3>
-                                    <p>As an Information Technology student specializing in web programming, I adeptly navigate the digital realm, mastering languages like HTML, CSS, and JavaScript. Passionate about crafting seamless user experiences, I thrive on the dynamic intersection of creativity and precision. Eager to contribute innovative solutions and shape the future of online landscapes.</p>
+                                    <h3>I'm Jehu Vincent Galvez from Philippines and<span> I'm a Web Developer</span></h3>
+                                    <p>As an Information Technology Student, I adeptly navigate the digital realm, mastering languages like HTML, CSS, JavaScript, and PHP. Passionate about crafting seamless user experiences, I thrive on the dynamic intersection of creativity and precision. Eager to contribute innovative solutions and shape the future of online landscapes.</p>
                                 </div>
                             </div>
                             <div class="row">
@@ -151,7 +199,7 @@
                                             </div>
                                         </div>
                                         <div class="skill-item padd-15">
-                                            <h5>BOOTSTRAP</h5>
+                                            <h5>PHP</h5>
                                             <div class="progress">
                                                 <div class="progress-in" per="35%" style="max-width: 33%;"></div>
                                                
@@ -311,14 +359,14 @@
                         <div class="contact-info-item padd-15">
                             <div class="icon"><i class="fa fa-phone"></i></div>
                             <h4>Call/Text Me</h4>
-                            <p>+63 9950 249 948</p>
+                            <p>+63 9950 249 948 <br> Philippines</p>
                         </div>
                         <!-- ===== Contact Info Item End ===== -->
                         <!-- ===== Contact Info Item Start ===== -->
                         <div class="contact-info-item padd-15">
                             <div class="icon"><i class="fa fa-map-marker-alt"></i></div>
                             <h4>Office</h4>
-                            <p>NU Fairview</p>
+                            <p>NU Fairview <br> Philippines</p>
                         </div>
                         <!-- ===== Contact Info Item End ===== -->
                         <!-- ===== Contact Info Item Start ===== -->
@@ -336,7 +384,33 @@
                         </div>
                         <!-- ===== Contact Info Item End ===== -->
                     </div>
-                    <h3 class="contact-title padd-15">SEND ME A MESSAGE</h3>
+
+
+<!-- PHP CODE TO CHECK IF THE VIEWER IS LOGGED IN SO THAT HE CAN SEND ME A MESSAGE -->
+<?php
+// If
+    // if not logged in
+    if(!isset($_SESSION["users"]))
+    {
+       
+?>
+
+<h3 class="hello contact-title padd-15"><span style="letter-spacing: 1px;">Let's shape the digital future together!</span></h3>
+<div>
+        <h3 class="contact-sub-title padd-15">We want to know you <br>Log In/Sign Up<br></h3>
+        </div>
+
+<div class="form-item col-12 padd-15" style=" display: flex; align-items: center; justify-content: center; ">
+    <a href="login.php" class="btn" target="_blank">Log In</a>
+    <a href="registration.php" class="btn" target="_blank">Sign Up</a>
+</div>
+
+
+
+
+<?php }else{ ?> 
+    <!-- ELSE -->
+    <h3 class="contact-title padd-15">SEND ME A MESSAGE</h3>
                     <h4 class="contact-sub-title padd-15">FOR YOUR INQUIRIES</h4>
                     <!-- ===== Contact Form ===== -->
                     <div class="row">
@@ -350,12 +424,12 @@
                                         <!-- WEB3FORMS PUBLIC KEY -->
                                         <input type="hidden" name="access_key" value="8ec7ec4a-e26c-40ee-be7a-d13e80ede32e">
 
-                                        <input type="text"  name="name" class="form-control" placeholder="Your Name" required>
+                                        <input type="text"  name="name" class="form-control" placeholder="Your Name" value="<?php echo $firstName," ",$lastName?>" disabled>
                                     </div>
                                 </div>
                                 <div class="form-item col-6 padd-15">
                                     <div class="form-group">
-                                        <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+                                        <input type="email" name="email" class="form-control" placeholder="Your Email" value="<?php echo $email?>" disabled>
                                     </div>
                                 </div>
                             </div>
@@ -383,7 +457,11 @@
                         
                         </div>
                        
-                    </div>
+                    </div> 
+                    <!-- End of Contact Form -->
+<!-- END BRACKET OR ELSE -->
+<?php } ?>
+
                 </div>
             </section>
             <!-- === Contact Section End === -->
@@ -419,6 +497,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.umd.js" integrity="sha512-+2pW8xXU/rNr7VS+H62aqapfRpqFwnSQh9ap6THjsm41AxgA0MhFRtfrABS+Lx2KHJn82UOrnBKhjZOXpom2LQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="js/script.js"></script>
     <script src="js/style-switcher.js"></script>
+
+
+
+
 </body>
 
 </html>

@@ -17,6 +17,9 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Form</title>
 
+    <!-- FAVICON -->
+    <link rel="icon" href="images/favicon.jpg" type="image/x-icon">
+
     <!-- BOOTSTRAP -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -25,19 +28,75 @@ session_start();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
     <!-- External CSS -->
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/skins/color-1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Style Switcher -->
+    <link rel="stylesheet" href="css/skins/color-1.css" class="alternate-style" title="color-1" disabled>
+    <link rel="stylesheet" href="css/skins/color-2.css" class="alternate-style" title="color-2" disabled>
+    <link rel="stylesheet" href="css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
+    <link rel="stylesheet" href="css/skins/color-4.css" class="alternate-style" title="color-4" disabled>
+    <link rel="stylesheet" href="css/skins/color-5.css" class="alternate-style" title="color-5" disabled>
+    <link rel="stylesheet" href="css/style-switcher.css">
 
     <!-- International Telephone Input FRAMEWORK -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@19.5.5/build/css/intlTelInput.css">
   
 
-    <!-- INLINE CSS -->
+    <!-- INTERNAL CSS -->
     <style>
-
+:root
+{
+    --bg-black-900: #f2f2fc;
+    --bg-black-100: #fdf9ff;
+    --bg-black-50: #e8dfec;
+    --text-black-900: #302e4d;
+    --text-black-700: #504e70;
+}
+/* DARK MODE */
+body.dark{
+    --bg-black-900: #151515;
+    --bg-black-100: #222222;
+    --bg-black-50: #393939;
+    --text-black-900: #ffffff;
+    --text-black-700: #e9e9e9;
+}
+body{
+    color: var(--text-black-900);
+    background-color: var(--bg-black-100);
+}
+input{
+    background-color: var(--bg-black-100);
+    color: var(--text-black-700);
+    border-color:  var(--bg-black-900);
+}
+.form-control, .form-group, .form-select:disabled, option, .iti *{
+    background-color: var(--bg-black-100);
+    color: var(--text-black-700);
+    transition: all 0.3s ease;
+    border-color:  var(--text-black-700);
+}
+.form-control:focus, .form-group:focus, select:focus, option:focus, .iti *:focus{
+    background-color: var(--bg-black-100);
+    color: var(--text-black-700);
+    transition: all 0.3s ease;
+    border-color:  var(--text-black-700);
+    box-shadow: 0 0 20px var(--skin-color);
+}
+label{
+    font-size: 15px;
+}
 .container {
-    max-width: 700px;
+    max-width: 600px;
+    /* max-height: 60%; */
     margin: 0 auto;
-    padding:50px;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 30px;
+   
+}
+.container:hover{
+    transition: all 0.5s ease;
+    box-shadow: 0 0 33px var(--skin-color);
 }
 .form-group{
     margin-bottom:25px;
@@ -59,7 +118,7 @@ session_start();
 #password-meter {
   width: 202px;
   height: 8px;
-  background: #FFF;
+  background: #c00;
   margin-top: 1em;
 }
 
@@ -160,18 +219,17 @@ session_start();
     </style>
 </head>
 <body>
-    <!-- HEADER -->
+ 
+
 <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12">
-                <header class="custom-header">
-                    <h2>Sign Up the Forms to Contact Me</h2>
+       <!-- HEADER -->
+        <div class="row justify-content-center mb-1">
+            <div class="">
+                <header class="custom-header section-title">
+                <h3 class="hello"><span style="letter-spacing: 1px;">Let's shape the digital future together!</span> <br>Sign Up Now!</h3>
                 </header>
             </div>
         </div>
-    </div>
-
-<div class="container">
 <?php
 
     if(isset($_POST["submit"])){
@@ -262,7 +320,7 @@ session_start();
         </div>
     </div>
           
-    <div class="row mb-3">
+    <div class="row mb-1">
         <div class="col">
             <label for="">Contact Number:</label>
             <div class="form-group">
@@ -282,44 +340,52 @@ session_start();
         </div>
     </div>      
          
-
-        <div class="form-floating mt-3" style="width: 100%; margin-bottom: 10px;">
-            <input type="text" class="form-control" placeholder="House name/number" name="Address" style="width: 100%;">
-            <label for="floatingInputValue">Address:</label>
+        <!-- ADDRESS -->
+        <div class="row">
+            <div class="col">
+                <div class="form-floating mt-2" style="width: 100%; margin-bottom: 10px;">
+                    <input type="text" class="form-control" placeholder="House name/number" name="Address" style="width: 100%;">
+                    <label for="floatingInputValue">Address (House Number/Bldg. Name, Street):</label>
+                </div>
+            </div>
         </div>
 
         <div class="row g-3 mb-5">
-            <div class="col-sm-7">
+            <div class="col-sm-5">
                 <div class="form-floating" style="width: 100%;">
                     <input type="text" class="form-control" name="Province" placeholder="State/Region:">
                     <label for="floatingInputValue">State/Province:</label>
                 </div>
             </div>
-            <div class="col-sm">
+            <div class="col-sm-4">
                 <div class="form-floating" style="width: 100%;">
                     <input type="text" class="form-control" name="City" placeholder="City:">
                     <label for="floatingInputValue">City:</label>
                 </div>
             </div>  
-            <div class="col-sm">
+            <div class="col-sm-3">
                 <div class="form-floating" style="width: 100%;">
                     <input type="text" class="form-control" name="Zip" placeholder="Zip code">
-                    <label for="floatingInputValue">Zip Code:</label>
+                    <label for="floatingInputValue">Zip:</label>
                 </div>    
             </div>
         </div>
 
  <!-- INPUT EMAIL -->
- <div class="form-floating mb-4">
-                <input type="text" class="form-control" name="Email" placeholder="Email: " required>
-                <label for="floatingInputValue">Email:</label>
-            </div>
+ <div class="row">
+    <div class="col">
+        <div class="form-floating mb-4">
+            <input type="text" class="form-control" name="Email" placeholder="Email: " required>
+            <label for="floatingInputValue">Email:</label>
+        </div>
+    </div>
+ </div>
 
+     <!-- INPUT PASSWORD -->
 <div class="row mb-5">
         <div class="col mt-1">
-            <!-- INPUT PASSWORD -->
             <div class="form-floating">
-                    <div style="background:#FFFFF0; position: relative;">
+                    <div style="background-color: var(--bg-black-100); position: relative;">
                         <div class="pmeter" style="width: 100%; height: 20px; font-size: 12px; font-weight: bold; color: #302e4d; padding: 0 0 10px 10px; text-align:center;" ></div>   
                     </div>
 
@@ -342,11 +408,13 @@ session_start();
 
 
         <div class="col text-center">
-            <div class="form-group">
-                <input type="submit" id="register" class="btn btn-primary btn-animated" style="width: 300px; height: 50px; border-radius: 25px;" name="submit" value="Submit">
+            <div class="mb-4">
+                <input type="submit" id="register" class="btn btn-outline-success btn-animated" style=" width: 270px; height: 50px; border-radius: 25px;" name="submit" value="Submit">
             </div>
+
             <div>
-                <p> Already Have an Account? <a href="login.php">Login Here</a></p>
+            <a href="index.php" class="btn btn-outline-success btn-animated mb-3" style=" width: 270px; height: 50px; border-radius: 25px;">Go Back</a>
+                <p> Already Have an Account? <a href="login.php" style="color: var(--skin-color);">Login Here</a></p>
             </div>
         </div>
 
@@ -469,6 +537,7 @@ $(function(){
             title: "Success!",
             text: "You are Registered Successfully!",
             html: `
+                <h5>You are Registered Successfully!</h5><br>
                 <a class="btn btn-outline-success" href="login.php">Log In Now</a>
             `,
             icon: "success"
@@ -477,18 +546,39 @@ $(function(){
 
     if ($('#fail').length > 0) {
         Swal.fire({
-            title: "Fail to Register!",
+            title: "Registration Failed!",
             text: "Please Try Again!",
             icon: "error"
         });
     }
 });
-
-
-
-
-           
+    
 </script>
+
+     <!-- ===== STILE SWITCHER START =====  -->
+     <div class="style-switcher">
+            <div class="style-switcher-toggler s-icon">
+                <i class="fas fa-cog fa-spin"></i>
+            </div>
+            <div class="day-night s-icon">
+                <i class="fas "></i>
+            </div>
+            <h4>Theme Colors</h4>
+            <div class="colors">
+                <span class="color-1" onclick="setActiveStyle('color-1')"></span>
+                <span class="color-2" onclick="setActiveStyle('color-2')"></span>
+                <span class="color-3" onclick="setActiveStyle('color-3')"></span>
+                <span class="color-4" onclick="setActiveStyle('color-4')"></span>
+                <span class="color-5" onclick="setActiveStyle('color-5')"></span>
+            </div>
+        </div>
+     <!-- ===== STILE SWITCHER END =====  -->
+    <!-- Javascript Files -->
+
+    <!-- TYPER JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.umd.js" integrity="sha512-+2pW8xXU/rNr7VS+H62aqapfRpqFwnSQh9ap6THjsm41AxgA0MhFRtfrABS+Lx2KHJn82UOrnBKhjZOXpom2LQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/script.js"></script>
+    <script src="js/style-switcher.js"></script>
 </body>
  
 
