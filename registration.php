@@ -350,7 +350,7 @@ label{
             </div>
         </div>
 
-        <div class="row g-3 mb-5">
+        <div class="row g-3 mb-4">
             <div class="col-sm-5">
                 <div class="form-floating" style="width: 100%;">
                     <input type="text" class="form-control" name="Province" placeholder="State/Region:">
@@ -374,7 +374,7 @@ label{
  <!-- INPUT EMAIL -->
  <div class="row">
     <div class="col">
-        <div class="form-floating mb-4">
+        <div class="form-floating">
             <input type="text" class="form-control" name="Email" placeholder="Email: " required>
             <label for="floatingInputValue">Email:</label>
         </div>
