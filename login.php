@@ -110,7 +110,7 @@ input{
         <div class="row justify-content-center mb-1">
             <div class="">
             <header class="custom-header section-title" style="padding: 15px;">
-                <h3 class="hello"><span style="letter-spacing: 1px;">Let's shape the digital future together!</span> <br><br> Log In</h3>
+                <h3 class="hello"><span style="letter-spacing: 1px;">Let's shape the digital future together!</span> <br><br> <a href="login.php" style="color: var(--skin-color);">Log In</a></h3>
                 </header>
             </div>
         </div>
@@ -128,12 +128,12 @@ input{
                         $_SESSION["users"] = "yes";
                         $_SESSION["client_id"] = $user["client_id"];
                         header("Location: index.php");
-                        die();
+                        // die();
                     }  else {
-                        echo "<div class='alert alert-danger'>Password does not match</div>";
+                        echo "<div class='alert alert-danger' id='fail'>Password does not match</div>";
                     }
                 } else {
-                    echo "<div class='alert alert-danger'>Email does not match</div>";
+                    echo "<div class='alert alert-danger' id='fail'>Email does not match</div>";
                 }
             }
         ?>
@@ -183,6 +183,32 @@ input{
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.umd.js" integrity="sha512-+2pW8xXU/rNr7VS+H62aqapfRpqFwnSQh9ap6THjsm41AxgA0MhFRtfrABS+Lx2KHJn82UOrnBKhjZOXpom2LQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="js/script.js"></script>
     <script src="js/style-switcher.js"></script>
+
+    <!-- SWEET ALERT -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="text/javascript">
+
+$(function(){
+    if ($('#login').length > 0) {
+        Swal.fire({
+            title: "Success!",
+            text: "Logged In Successfully!",
+            html: `
+                <h6>You are Logged In Successfully!</h6><br>
+            `,
+            icon: "success"
+        });
+    }
+
+    if ($('#fail').length > 0) {
+        Swal.fire({
+            title: "Log In Failed!",
+            text: "Please Try Again!",
+            icon: "error"
+        });
+    }
+});
 </body>
 
 </html>
