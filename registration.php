@@ -538,7 +538,7 @@ $(function(){
             text: "You are Registered Successfully!",
             html: `
                 <h6>You are Registered Successfully!</h6><br>
-                <a class="btn btn-outline-success" href="login.php">Log In Now</a>
+                <a class="" href="login.php" style='width: 200px; color: var(--skin-color);'>Log In Now</a>
             `,
             icon: "success"
         });
