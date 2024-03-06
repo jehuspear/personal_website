@@ -128,7 +128,7 @@ input{
                         $_SESSION["users"] = "yes";
                         $_SESSION["client_id"] = $user["client_id"];
                         header("Location: index.php");
-                        // die();
+                        die();
                     }  else {
                         echo "<div class='alert alert-danger' id='fail'>Password does not match</div>";
                     }
