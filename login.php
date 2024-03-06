@@ -110,7 +110,7 @@ input{
         <div class="row justify-content-center mb-1">
             <div class="">
             <header class="custom-header section-title" style="padding: 15px;">
-                <h3 class="hello"><span style="letter-spacing: 1px;">Let's shape the digital future together!</span> <br><br> <a href="login.php" style="color: var(--skin-color);">Log In</a></h3>
+                <h3 class="hello"><span style="letter-spacing: 1px;">Let's shape the digital future together!</span> <br><br> <a href="login.php" style="color: var(--skin-color); text-decoration:none;">Log In</a></h3>
                 </header>
             </div>
         </div>
