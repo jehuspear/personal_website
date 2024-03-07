@@ -4,6 +4,32 @@
     {
         header("Location: index.php");
     }
+
+    if(isset($_POST["login"])) {
+        $email = $_POST["email"];
+        $password = $_POST["password"];
+        require_once "database.php";
+        $sql = "SELECT * FROM clients_tbl WHERE Email = '$email' ";
+        $result = mysqli_query($conn, $sql);
+        $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        if($user) {
+            if(password_verify($password, $user["Password"])) {
+                $_SESSION["users"] = "yes";
+                $_SESSION["client_id"] = $user["client_id"];
+                header("Location: index.php");
+                die();
+            } else{
+                echo '<div class="alert alert-danger alert-dismissible fade show text-center" role="alert" id="fail">Password is Incorrect
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';
+            }
+        } else {
+                echo '<div class="alert alert-danger alert-dismissible fade show text-center" role="alert" id="fail">Email is Incorrect
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>';
+        }
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +37,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>Log In</title>
 
     <!-- FAVICON -->
     <link rel="icon" href="images/favicon.jpg" type="image/x-icon">
@@ -96,7 +122,84 @@ input{
 .form-control:not(:focus):valid + .form-floating label {
     background-color: #333333; /* Dark gray */
 }
+.logo{
+    /* position: absolute; */
+    top: 65px;
+    text-align: center;
+    font-size: 30px;
+    text-transform: capitalize;
+}
+.logo a
+{
+    color: var(--text-black-900);
+    font-weight: 700;
+    padding: 15px 20px;
+    font-size: 30px;
+    letter-spacing: 5px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    
+ 
+}
+.logo:hover{
+    transition: all 0.3s ease-in-out;
+    transform: scale(1.1);
+    animation: pulse 1s infinite alternate;
+}
+    
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(2.1);
+    }
+}
 
+.logo a span
+{
+    font-family: 'Clicker Script', cursive;
+    font-size: 40px;
+}
+.logo a::before{
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-bottom: 5px solid var(--skin-color);
+    border-left: 5px solid var(--skin-color);
+    bottom: 0;
+    left: 0;
+}
+.logo a::after{
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-top: 5px solid var(--skin-color);
+    border-right: 5px solid var(--skin-color);
+    top: 0;
+    right: 0;
+}
+ /* Custom CSS for button animation effects */
+ .btn-animated {
+            transition: all 0.3s ease-in-out;
+        }
+        .btn-animated:hover {
+            transform: scale(1.1);
+        }
+        .btn-pulse {
+            animation: pulse 1s infinite alternate;
+        }
+        @keyframes pulse {
+            from {
+                transform: scale(1);
+            }
+            to {
+                transform: scale(1.1);
+            }
+        }
 
     </style>
 
@@ -106,37 +209,23 @@ input{
     <div class="container d-flex justify-content-center mt-5">
         
             <div class="card-body" style="height:50%;">
+            <div class="logo ">
+                <a href="index.php" onclick="refreshPage()"><span>J</span>ehu</a>
+               
+            </div>
                  <!-- HEADER -->
-        <div class="row justify-content-center mb-1">
+        <div class="row justify-content-center mb-1 mt-3">
+      
             <div class="">
-            <header class="custom-header section-title" style="padding: 15px;">
-                <h3 class="hello"><span style="letter-spacing: 1px;">Let's shape the digital future together!</span> <br><br> <a href="login.php" style="color: var(--skin-color); text-decoration:none;">Log In</a></h3>
+            <header class="custom-header" style="padding: 15px;">
+                <h3 class="hello"><span style="letter-spacing: 1px;">Let's shape the digital future together!</span> <br><br> <a href="login.php" style="color: var(--text-black-900); text-decoration:none;">Log In</a></h3>
+                
                 </header>
             </div>
         </div>
-           <!-- PHP CODE FOR LOGGING IN -->
-           <?php
-            if(isset($_POST["login"])) {
-                $email = $_POST["email"];
-                $password = $_POST["password"];
-                require_once "database.php";
-                $sql = "SELECT * FROM clients_tbl WHERE Email = '$email' ";
-                $result = mysqli_query($conn, $sql);
-                $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
-                if($user) {
-                    if(password_verify($password, $user["Password"])) {
-                        $_SESSION["users"] = "yes";
-                        $_SESSION["client_id"] = $user["client_id"];
-                        header("Location: index.php");
-                        die();
-                    }  else {
-                        echo "<div class='alert alert-danger' id='fail'>Password does not match</div>";
-                    }
-                } else {
-                    echo "<div class='alert alert-danger' id='fail'>Email does not match</div>";
-                }
-            }
-        ?>
+
+
+
                 <form class="mt-4" action="login.php" method="post">
                     <div class="form-floating mb-3">
                         <input type="email" name="email" class="form-control" placeholder="Email:" required>
@@ -190,12 +279,15 @@ input{
 <script type="text/javascript">
 
 $(function(){
-    if ($('#login').length > 0) {
+    if ($('#success').length > 0) {
         Swal.fire({
             title: "Success!",
             text: "Logged In Successfully!",
             html: `
                 <h6>You are Logged In Successfully!</h6><br>
+                <div class="logo ">
+                <a href="index.php" "><span>J</span>ehu</a>
+            </div>
             `,
             icon: "success"
         });
