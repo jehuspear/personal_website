@@ -226,7 +226,7 @@ label{
         <div class="row justify-content-center mb-1">
             <div class="">
                 <header class="custom-header section-title">
-                <h3 class="hello"><span style="letter-spacing: 1px;">Let's shape the digital future together!</span> <br>Sign Up Now!</h3>
+                <h3 class="hello"><span style="letter-spacing: 1px;">Let's shape the digital future together!</span><br><br>Sign Up Now!</h3>
                 </header>
             </div>
         </div>
@@ -323,11 +323,11 @@ label{
     <div class="row mb-1">
         <div class="col">
             <label for="">Contact Number:</label>
-            <div class="form-group">
+            <div class="form-group" style="max-width: 100%;">
                     <!-- CONTACT NUMBER -->
-                    <input type="tel" id="phone" class="form-control-lg" name="ContactNo" required="" >
+                    <input type="tel" id="phone" class="form-control-lg" style="max-width: 100%;" name="ContactNo" required="" >
             </div>
-        </div>   
+        </div> 
 
         <div class="col">
                   <!-- COUNTRY -->
