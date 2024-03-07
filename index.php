@@ -280,7 +280,7 @@
                                                         </h3>
                                                         <h4 class="timeline-title">Web Game Development</h4>
                                                         <img src="./images/portfolio/tiki_taki_tow.png" class="image" alt="Game Dev Experience">
-                                                        <a class="btn" href="https://tiki-taki-tow.azurewebsites.net/index.php" target="_blank" style=" display: flex; align-items: center; justify-content: center; height:15px;">Play Game</a>
+                                                        <a class="btn" href="https://tiki-taki-tow.azurewebsites.net/index.php" target="_blank" style=" display: flex; align-items: center; justify-content: center; height:50px;">Play Game</a>
                                                 </div>
 
                                             
@@ -493,10 +493,11 @@
      <!-- ===== STILE SWITCHER END =====  -->
     <!-- Javascript Files -->
 
-    <!-- TYPER JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.umd.js" integrity="sha512-+2pW8xXU/rNr7VS+H62aqapfRpqFwnSQh9ap6THjsm41AxgA0MhFRtfrABS+Lx2KHJn82UOrnBKhjZOXpom2LQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="js/script.js"></script>
-    <script src="js/style-switcher.js"></script>
+<!-- TYPER JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.umd.js" integrity="sha512-+2pW8xXU/rNr7VS+H62aqapfRpqFwnSQh9ap6THjsm41AxgA0MhFRtfrABS+Lx2KHJn82UOrnBKhjZOXpom2LQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="js/script.js"></script>
+<script src="js/style-switcher.js"></script>
+
 
 
 
