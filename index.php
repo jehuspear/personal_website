@@ -422,14 +422,16 @@
                                     <div class="form-group">
 
                                         <!-- WEB3FORMS PUBLIC KEY -->
-                                        <input type="hidden" name="access_key" value="8ec7ec4a-e26c-40ee-be7a-d13e80ede32e">
-
-                                        <input type="text"  name="name" class="form-control" placeholder="Your Name" value="<?php echo $firstName," ",$lastName?>" disabled>
+                                        <!-- OLD -->
+                                        <!-- <input type="hidden" name="access_key" value="8ec7ec4a-e26c-40ee-be7a-d13e80ede32e">  -->
+                                        <!-- NEW -->
+                                        <input type="hidden" name="access_key" value="fbdbc6f0-4ba8-4bf8-9dc3-9430f357d473"> 
+                                        <input type="text"  name="name" class="form-control" placeholder="Your Name" value="<?php echo $firstName," ",$lastName?>" readonly>
                                     </div>
                                 </div>
                                 <div class="form-item col-6 padd-15">
                                     <div class="form-group">
-                                        <input type="email" name="email" class="form-control" placeholder="Your Email" value="<?php echo $email?>" disabled>
+                                        <input type="email" name="email" class="form-control" placeholder="Your Email" value="<?php echo $email?>" readonly>
                                     </div>
                                 </div>
                             </div>
