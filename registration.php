@@ -321,15 +321,15 @@ label{
     </div>
           
 
-    <div class="row g-2 mb-4" style="padding:7px;">
-            <div class="col-sm-6">
+    <div class="row mb-4" style="padding:7px;">
+            <div class="col-sm-8">
             <label for="">Contact Number:</label>
-                <div class="form-floating" style="width: 100%;">
+                <div class="form-group" style="max-width: 100%;">
                     <!-- CONTACT NUMBER -->
-                    <input type="tel" id="phone" class="form-control-lg" style="max-width: 93%;" name="ContactNo" required="" >
+                    <input type="tel" id="phone" class="form-control-lg" style="width: 100%;" name="ContactNo" required="" >
                 </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-4">
                 <div class="form-floating" style="width: 100%;">
                     <!-- COUNTRY -->
                     <select id="address-country"  class="form-select" id="floatingSelect" style="margin-top:20px; border-color:var(--skin-color);" name="selectedOption" disabled></select>
