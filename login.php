@@ -201,11 +201,32 @@ input{
             }
         }
 
+.section1{
+    /* background: var(--bg-black-900); */
+    transition: all 0.5s ease;
+}
+.section1.active{
+    z-index: 2;
+    opacity: 1;
+    animation: slideSection 1s ease;
+}
+@keyframes slideSection {
+    0%
+    {
+        transform: translateX(100%);
+    }
+    100%
+    {
+        transform: translateX(0%);
+    }
+}
+
     </style>
 
 
 </head>
 <body>
+<section class="section1 active">
     <div class="container d-flex justify-content-center mt-5">
         
             <div class="card-body" style="height:50%;">
@@ -244,8 +265,9 @@ input{
                     Not Registered yet? <a href="registration.php" style="color: var(--skin-color);"> Register Here</a>
                 </div>
           
+     </div>
     </div>
-
+</section>
 
 
     <!-- ===== STILE SWITCHER START =====  -->

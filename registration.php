@@ -215,11 +215,33 @@ label{
                 transform: scale(1.1);
             }
         }
+
+.section1{
+    /* background: var(--bg-black-900); */
+    transition: all 0.5s ease;
+}
+.section1.active{
+    z-index: 2;
+    opacity: 1;
+    animation: slideSection 1s ease;
+}
+@keyframes slideSection {
+    0%
+    {
+        transform: translateX(100%);
+    }
+    100%
+    {
+        transform: translateX(0%);
+    }
+}
  
     </style>
 </head>
 <body>
  
+<section class="section1 active">
+
 
 <div class="container">
        <!-- HEADER -->
@@ -422,6 +444,7 @@ label{
 
     </form>
 </div> 
+</section>
 <!-- END OF CONTAINER -->
 
 <!-- Getting The selected option Country text to PHP using a hidden input field within your HTML form.  -->
